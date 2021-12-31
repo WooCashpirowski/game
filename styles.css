@@ -1,0 +1,381 @@
+:root {
+  --main-green: #00c000;
+  --main-grey: #d6d6d6;
+  --led-dark: #202020;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  background: black;
+}
+
+h1 {
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 2rem;
+  z-index: 5;
+  color: var(--main-green);
+  letter-spacing: 2px;
+  font-size: 3rem;
+}
+
+.start {
+  position: absolute;
+  width: 80%;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.start h1 {
+  cursor: pointer;
+  color: var(--main-green);
+  animation: fade 2s infinite;
+  font-weight: 800;
+  font-size: 2rem;
+  box-shadow: inset 0 0 20px var(--main-green);
+  border-radius: 5px;
+  padding-bottom: 0.5rem;
+  transition: 0.3s ease-in-out;
+}
+
+.start h1:hover {
+  transform: scale(1.05);
+  animation: unset;
+}
+
+.start .rangeWrapper {
+  text-align: center;
+  color: var(--main-green);
+}
+
+.start .rangeWrapper input[type='range'] {
+  display: block;
+  -webkit-appearance: none;
+  background-color: var(--main-grey);
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  margin: 1.5rem auto 0.5rem;
+  outline: 0;
+}
+
+.start .rangeWrapper input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: var(--main-green);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.start .rangeWrapper input[type='range']::-webkit-slider-thumb:active,
+.start .rangeWrapper input[type='range']::-webkit-slider-thumb:hover {
+  transform: scale(1.6);
+}
+
+.start .rangeWrapper h3 {
+  letter-spacing: 1px;
+  margin-bottom: 2rem;
+}
+
+.start .rangeWrapper h2 {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+.resetGame {
+  background: var(--main-green);
+  margin-top: 2rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  transition: 0.3s ease-in-out;
+  visibility: hidden;
+}
+
+.resetGame:hover {
+  background: black;
+  color: var(--main-green);
+  box-shadow: inset 0 0 5px var(--main-green);
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  font-size: 20pt;
+  margin: 0 4px;
+  padding: 0 8px;
+}
+
+.container {
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: fit-content;
+  width: 86%;
+}
+
+.panel {
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--main-grey);
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  padding: 1%;
+  justify-content: center;
+  align-items: center;
+}
+
+.led {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  border: solid 3px var(--led-dark);
+  background: #6b6b6b;
+  box-shadow: -2px 2px #827e7f;
+}
+
+.memoryPanel {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(4, 25%);
+  margin: 25px 0;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background: black;
+  padding: 5px;
+  border-radius: 1px;
+  box-shadow: 0px 0px 0px 4px rgba(57, 57, 57, 1),
+    0px 0px 0px 9px rgba(197, 197, 197, 1);
+}
+
+.memory {
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+}
+
+.memoryActive {
+  animation: mActive 0.3s;
+}
+
+@keyframes mActive {
+  to {
+    background: #44a8fe;
+  }
+}
+
+.ledOn {
+  background: #00c000;
+}
+
+.playerMemory {
+  display: grid;
+  gap: 4%;
+  grid-template-columns: repeat(4, 23%);
+  grid-template-rows: repeat(4, 23%);
+  place-content: center;
+  margin: 25px 0;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  border-radius: 1px;
+}
+
+.btn {
+  background: #686868;
+  box-shadow: 0px 0px 0px 4px rgb(10, 10, 10);
+  border: inset 2px #505050;
+  border-radius: 2px;
+  cursor: not-allowed;
+}
+
+.playerMemoryActive {
+  background: var(--main-grey);
+  box-shadow: 0px 0px 0px 2px rgb(10, 10, 10);
+  border: inset 2px #505050;
+  cursor: pointer;
+}
+
+.playerMemoryError {
+  animation: errorMemory 0.2s;
+  animation-iteration-count: 4;
+}
+
+.playerLedError {
+  animation: errorLed 0.2s;
+  animation-iteration-count: 4;
+}
+
+.playerMemoryComplete {
+  animation: completeMemory 0.2s;
+  animation-iteration-count: 4;
+}
+
+.playerLedComplete {
+  animation: completeLed 0.2s;
+  animation-iteration-count: 4;
+}
+
+.ledsWrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@keyframes errorLed {
+  to {
+    border: solid 5px var(--led-dark);
+    background: #cc3700;
+  }
+}
+
+@keyframes errorMemory {
+  to {
+    background: #af0f0f;
+    box-shadow: 0px 0px 0px 4px #952c01 !important;
+    border: inset 4px #200200;
+  }
+}
+
+@keyframes completeLed {
+  to {
+    border: solid 5px var(--led-dark);
+    background-image: url(../svg/ledgreen.svg);
+  }
+}
+
+@keyframes completeMemory {
+  to {
+    background: #00c000;
+    box-shadow: 0px 0px 0px 4px #017a01 !important;
+    border: inset 4px #200200;
+  }
+}
+
+@keyframes playermemoryClick {
+  to {
+    background: #289cbf;
+    box-shadow: 0px 0px 0px 4px #133e71;
+    border: inset 4px #03182e;
+  }
+}
+
+@media screen and (max-width: 936px) {
+  .container {
+    flex-direction: column;
+  }
+  .panel {
+    margin: 15px 0;
+    min-width: 280px;
+    min-height: 317px;
+  }
+  .panel .box {
+    min-height: 268px;
+    min-width: 79.8%;
+  }
+}
+
+@media screen and (min-width: 642px) {
+  .container {
+    flex-direction: row;
+  }
+  .panel {
+    margin: 0 15px;
+    min-width: 280px;
+    min-height: 317px;
+  }
+  .panel .box {
+    min-height: 268px;
+    min-width: 79.8%;
+  }
+  .start .rangeWrapper h2 {
+    font-size: 2rem;
+    margin: 1.5rem 0;
+  }
+}
+
+@media screen and (min-width: 776px) {
+  .container {
+    flex-direction: row;
+  }
+  .panel {
+    margin: 0 15px;
+    min-width: 368px;
+    min-height: 417px;
+  }
+  .panel .box {
+    min-height: 353px;
+    min-width: 79.8%;
+  }
+  .start h1 {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 1159px) {
+  .panel {
+    margin: 0 15px;
+    min-width: 456px;
+    min-height: 517px;
+  }
+  .panel .box {
+    min-height: 428px;
+    min-width: 79.8%;
+  }
+}
